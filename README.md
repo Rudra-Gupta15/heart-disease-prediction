@@ -41,3 +41,4 @@ python main.py
 📌 Result
 
 The project compares multiple ML algorithms to determine the most effective model for heart disease prediction with clear visual performance metrics.
+
