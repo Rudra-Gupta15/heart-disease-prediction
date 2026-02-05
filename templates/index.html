@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,28 +21,105 @@
             padding: 20px;
         }
 
+        /* Removed old Logo Section Styles */
+
+        /* ========================================
+           HEADER
+           ======================================== */
+
         .header {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 77, 77, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            text-align: left;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            background: linear-gradient(135deg, #ff4d4d, #ff8080);
+            font-size: 2.2em;
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .header p {
-            color: #aaa;
-            font-size: 1.1em;
+            color: #ccc;
+            font-size: 1em;
+            letter-spacing: 0.5px;
+        }
+
+        /* LOGO IN HEADER */
+        .header-logo {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 77, 77, 0.5);
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05) rotate(5deg);
+            border-color: #ff4d4d;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
         }
 
         .container {
@@ -62,6 +140,19 @@
             height: fit-content;
             position: sticky;
             top: 20px;
+            animation: slideInLeft 0.6s ease 0.1s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .ranges h3 {
@@ -126,6 +217,19 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            animation: slideInRight 0.6s ease 0.1s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .form-grid {
@@ -157,9 +261,23 @@
             content: "●";
             color: #ff4d4d;
             font-size: 0.8em;
+            animation: blink 1.5s ease-in-out infinite;
         }
 
-        input, select {
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        input,
+        select {
             width: 100%;
             padding: 12px 15px;
             border-radius: 10px;
@@ -170,11 +288,13 @@
             transition: all 0.3s ease;
         }
 
-        input:focus, select:focus {
+        input:focus,
+        select:focus {
             outline: none;
             border-color: #ff4d4d;
             background: rgba(0, 0, 0, 0.5);
             box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.1);
+            transform: translateY(-2px);
         }
 
         input::placeholder {
@@ -200,6 +320,23 @@
             box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        button:hover::before {
+            left: 100%;
         }
 
         button:hover {
@@ -225,6 +362,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -270,6 +408,66 @@
             border: 1px solid rgba(77, 166, 255, 0.3);
         }
 
+        /* ========================================
+           FOOTER - CREATED BY
+           ======================================== */
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 77, 77, 0.2);
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer strong {
+            color: #ff4d4d;
+            font-weight: 600;
+        }
+
+        .footer a {
+            color: #ff4d4d;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .footer a:hover {
+            border-bottom-color: #ff4d4d;
+            color: #ff8080;
+        }
+
+        .portfolio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            border-radius: 20px;
+            color: #ff4d4d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-left: 8px;
+        }
+
+        .portfolio-btn:hover {
+            background: rgba(255, 77, 77, 0.2);
+            border-color: rgba(255, 77, 77, 0.6);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+        }
+
         @media (max-width: 968px) {
             .container {
                 grid-template-columns: 1fr;
@@ -285,6 +483,15 @@
 
             .header h1 {
                 font-size: 2em;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-text {
+                text-align: center;
             }
         }
 
@@ -310,209 +517,228 @@
 
 <body>
 
-<div class="header">
-    <h1>❤️ Heart Disease Prediction System</h1>
-    <p>Advanced cardiovascular risk assessment tool</p>
-</div>
-
-<div class="container">
-
-    <!-- LEFT SIDE: RANGES -->
-    <div class="ranges">
-        <div class="low-risk">
-            <h3 class="low-risk">🟢 Low Risk Profile</h3>
-            <div class="range-item">
-                <span class="range-label">Age</span>
-                <span class="range-value">30 – 50 years</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Chest Pain Type</span>
-                <span class="range-value">1 or 2</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Blood Pressure</span>
-                <span class="range-value">90 – 125 mmHg</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Cholesterol</span>
-                <span class="range-value">150 – 240 mg/dL</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Max Heart Rate</span>
-                <span class="range-value">150 – 190 bpm</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Exercise Angina</span>
-                <span class="range-value">No</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">ST Depression</span>
-                <span class="range-value">0.0 – 0.5</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Vessels Colored</span>
-                <span class="range-value">0</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Thallium</span>
-                <span class="range-value">3 (Normal)</span>
-            </div>
+    <div class="header">
+        <div class="header-content">
+            <h1>❤️ Heart Disease Prediction System</h1>
+            <p>Advanced cardiovascular risk assessment tool</p>
         </div>
 
-        <div class="high-risk">
-            <h3 class="high-risk">🔴 High Risk Profile</h3>
-            <div class="range-item">
-                <span class="range-label">Age</span>
-                <span class="range-value">55 – 80 years</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Chest Pain Type</span>
-                <span class="range-value">3 or 4</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Blood Pressure</span>
-                <span class="range-value">130+ mmHg</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Cholesterol</span>
-                <span class="range-value">250+ mg/dL</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Max Heart Rate</span>
-                <span class="range-value">90 – 140 bpm</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Exercise Angina</span>
-                <span class="range-value">Yes</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">ST Depression</span>
-                <span class="range-value">1.0+</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Vessels Colored</span>
-                <span class="range-value">1 – 3</span>
-            </div>
-            <div class="range-item">
-                <span class="range-label">Thallium</span>
-                <span class="range-value">6 or 7 (Defect)</span>
-            </div>
-        </div>
+        <a href="https://rudra-portfolio-liart.vercel.app/" target="_blank" rel="noopener noreferrer"
+            class="header-logo">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Developer Portfolio">
+        </a>
     </div>
 
-    <!-- RIGHT SIDE: FORM -->
-    <div class="form-box">
-        <form method="POST">
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>Age <span class="info-badge">years</span></label>
-                    <input type="number" name="age" min="0" max="120" placeholder="e.g., 45" required>
-                </div>
+    <div class="container">
 
-                <div class="form-group">
-                    <label>Sex</label>
-                    <select name="sex">
-                        <option value="0">Female</option>
-                        <option value="1">Male</option>
-                    </select>
+        <!-- LEFT SIDE: RANGES -->
+        <div class="ranges">
+            <div class="low-risk">
+                <h3 class="low-risk">🟢 Low Risk Profile</h3>
+                <div class="range-item">
+                    <span class="range-label">Age</span>
+                    <span class="range-value">30 – 50 years</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Chest Pain Type <span class="info-badge">1-4</span></label>
-                    <select name="chest_pain">
-                        <option value="1">Type 1 (Typical Angina)</option>
-                        <option value="2">Type 2 (Atypical Angina)</option>
-                        <option value="3">Type 3 (Non-anginal Pain)</option>
-                        <option value="4">Type 4 (Asymptomatic)</option>
-                    </select>
+                <div class="range-item">
+                    <span class="range-label">Chest Pain Type</span>
+                    <span class="range-value">1 or 2</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Blood Pressure <span class="info-badge">mmHg</span></label>
-                    <input type="number" name="bp" min="50" max="250" placeholder="e.g., 120" required>
+                <div class="range-item">
+                    <span class="range-label">Blood Pressure</span>
+                    <span class="range-value">90 – 125 mmHg</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Cholesterol <span class="info-badge">mg/dL</span></label>
-                    <input type="number" name="chol" min="100" max="700" placeholder="e.g., 200" required>
+                <div class="range-item">
+                    <span class="range-label">Cholesterol</span>
+                    <span class="range-value">150 – 240 mg/dL</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Fasting Blood Sugar > 120 mg/dL</label>
-                    <select name="fbs">
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>
+                <div class="range-item">
+                    <span class="range-label">Max Heart Rate</span>
+                    <span class="range-value">150 – 190 bpm</span>
                 </div>
-
-                <div class="form-group">
-                    <label>EKG Results</label>
-                    <select name="ekg">
-                        <option value="0">Normal</option>
-                        <option value="1">ST-T Wave Abnormality</option>
-                        <option value="2">Left Ventricular Hypertrophy</option>
-                    </select>
+                <div class="range-item">
+                    <span class="range-label">Exercise Angina</span>
+                    <span class="range-value">No</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Max Heart Rate <span class="info-badge">bpm</span></label>
-                    <input type="number" name="max_hr" min="60" max="220" placeholder="e.g., 150" required>
+                <div class="range-item">
+                    <span class="range-label">ST Depression</span>
+                    <span class="range-value">0.0 – 0.5</span>
                 </div>
-
-                <div class="form-group">
-                    <label>Exercise Induced Angina</label>
-                    <select name="ex_angina">
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>
+                <div class="range-item">
+                    <span class="range-label">Vessels Colored</span>
+                    <span class="range-value">0</span>
                 </div>
-
-                <div class="form-group">
-                    <label>ST Depression <span class="info-badge">induced by exercise</span></label>
-                    <input type="number" step="0.1" name="st_dep" min="0" max="6" placeholder="e.g., 1.0">
-                </div>
-
-                <div class="form-group">
-                    <label>Slope of Peak Exercise ST</label>
-                    <select name="slope">
-                        <option value="1">Upsloping</option>
-                        <option value="2">Flat</option>
-                        <option value="3">Downsloping</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Number of Major Vessels</label>
-                    <select name="vessels">
-                        <option value="0">0 vessels</option>
-                        <option value="1">1 vessel</option>
-                        <option value="2">2 vessels</option>
-                        <option value="3">3 vessels</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Thallium Stress Test</label>
-                    <select name="thallium">
-                        <option value="3">Normal</option>
-                        <option value="6">Fixed Defect</option>
-                        <option value="7">Reversible Defect</option>
-                    </select>
+                <div class="range-item">
+                    <span class="range-label">Thallium</span>
+                    <span class="range-value">3 (Normal)</span>
                 </div>
             </div>
 
-            <button type="submit">🔍 Analyze Risk</button>
-        </form>
-
-        {% if result %}
-        <div class="result {% if 'ABSENT' in result %}absent{% else %}present{% endif %}">
-            <h3>{{ result }}</h3>
-            <p>Confidence: {{ probability }}</p>
+            <div class="high-risk">
+                <h3 class="high-risk">🔴 High Risk Profile</h3>
+                <div class="range-item">
+                    <span class="range-label">Age</span>
+                    <span class="range-value">55 – 80 years</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Chest Pain Type</span>
+                    <span class="range-value">3 or 4</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Blood Pressure</span>
+                    <span class="range-value">130+ mmHg</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Cholesterol</span>
+                    <span class="range-value">250+ mg/dL</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Max Heart Rate</span>
+                    <span class="range-value">90 – 140 bpm</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Exercise Angina</span>
+                    <span class="range-value">Yes</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">ST Depression</span>
+                    <span class="range-value">1.0+</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Vessels Colored</span>
+                    <span class="range-value">1 – 3</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Thallium</span>
+                    <span class="range-value">6 or 7 (Defect)</span>
+                </div>
+            </div>
         </div>
-        {% endif %}
+
+        <!-- RIGHT SIDE: FORM -->
+        <div class="form-box">
+            <form method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Age <span class="info-badge">years</span></label>
+                        <input type="number" name="age" min="0" max="120" placeholder="e.g., 45" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sex</label>
+                        <select name="sex">
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chest Pain Type <span class="info-badge">1-4</span></label>
+                        <select name="chest_pain">
+                            <option value="1">Type 1 (Typical Angina)</option>
+                            <option value="2">Type 2 (Atypical Angina)</option>
+                            <option value="3">Type 3 (Non-anginal Pain)</option>
+                            <option value="4">Type 4 (Asymptomatic)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Blood Pressure <span class="info-badge">mmHg</span></label>
+                        <input type="number" name="bp" min="50" max="250" placeholder="e.g., 120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cholesterol <span class="info-badge">mg/dL</span></label>
+                        <input type="number" name="chol" min="100" max="700" placeholder="e.g., 200" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fasting Blood Sugar > 120 mg/dL</label>
+                        <select name="fbs">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>EKG Results</label>
+                        <select name="ekg">
+                            <option value="0">Normal</option>
+                            <option value="1">ST-T Wave Abnormality</option>
+                            <option value="2">Left Ventricular Hypertrophy</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Max Heart Rate <span class="info-badge">bpm</span></label>
+                        <input type="number" name="max_hr" min="60" max="220" placeholder="e.g., 150" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Exercise Induced Angina</label>
+                        <select name="ex_angina">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ST Depression <span class="info-badge">induced by exercise</span></label>
+                        <input type="number" step="0.1" name="st_dep" min="0" max="6" placeholder="e.g., 1.0">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Slope of Peak Exercise ST</label>
+                        <select name="slope">
+                            <option value="1">Upsloping</option>
+                            <option value="2">Flat</option>
+                            <option value="3">Downsloping</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Major Vessels</label>
+                        <select name="vessels">
+                            <option value="0">0 vessels</option>
+                            <option value="1">1 vessel</option>
+                            <option value="2">2 vessels</option>
+                            <option value="3">3 vessels</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Thallium Stress Test</label>
+                        <select name="thallium">
+                            <option value="3">Normal</option>
+                            <option value="6">Fixed Defect</option>
+                            <option value="7">Reversible Defect</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">🔍 Analyze Risk</button>
+            </form>
+
+            {% if result %}
+            <div class="result {% if 'ABSENT' in result %}absent{% else %}present{% endif %}">
+                <h3>{{ result }}</h3>
+                <p>Confidence: {{ probability }}</p>
+            </div>
+            {% endif %}
+        </div>
+
     </div>
 
-</div>
+    <!-- FOOTER - CREATED BY -->
+    <div class="footer">
+        <p>
+            Created by <strong>Rudra Kumar Gupta</strong>
+            <a href="https://rudraportfolio-five.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="portfolio-btn">
+                🌐 Portfolio
+            </a>
+        </p>
+    </div>
 
 </body>
+
 </html>
