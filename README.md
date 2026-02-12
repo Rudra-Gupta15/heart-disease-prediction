@@ -13,7 +13,7 @@ This project is an end-to-end **Machine Learning application** designed to predi
 
 ## ✨ Key Features
 
-* 🤖 **Algorithm Implementation:** Comparison of Logistic Regression, Random Forest, and Gradient Boosting to find the most accurate predictor.
+* 🤖 **Algorithm Implementation:** Logistic Regression.
 * 🌐 **Interactive Web UI:** Custom-built frontend using Flask `templates` for seamless user data entry.
 * ⚡ **Model Serialization:** Uses a pre-trained `heart_disease_bundle.pkl` for instantaneous inference without retraining.
 * 📊 **Deep Metric Analysis:** Evaluation using Confusion Matrices, Classification Reports, and ROC-AUC scores to ensure medical reliability.
@@ -39,3 +39,4 @@ heart-disease-prediction/
 ├── app.py              # Flask server & prediction logic
 ├── heart_disease_bundle.pkl  # Serialized ML model & scaler
 └── requirements.txt    # Project dependencies
+
